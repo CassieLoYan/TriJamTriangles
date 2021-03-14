@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HowToPlay.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "                      HOW TO PLAY
+   AD - Rotate your triangle
+   WS - Move Forwards and backwards
+   Spacebar - Shoot (When Powererd up)
+   Your goal is to survive as long as possile and kill as many squares as you can to get the highest score. You can kill squares by running into them with the point of your triangle. Power ups will randomly appear around the map, after collecting them you will be able to shoot for a short amount of time by pressing space.
+                       Good Luck!"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.383
+anchor_top = 0.942
+anchor_right = 0.617
+anchor_bottom = 1.0
+margin_left = -0.192017
+margin_top = -0.200012
+margin_right = 0.191956
+custom_fonts/font = SubResource( 2 )
+text = "BACK TO MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -3,14 +3,24 @@ extends KinematicBody
 var speed := 0.0
 var velocity := Vector3.ZERO
 onready var rays = $rays
+var powered_up = false
 
 func _physics_process(delta) -> void:
 	var input = get_inputs()
 	handle_rotation(delta,input)
 	handle_movement(delta,input)
 	check_collisions()
+	power()
 	return
 
+func power():
+	if !powered_up:
+		return
+	if Input.is_action_just_pressed("shoot"):
+		var new_shot = load("res://Projectile.tscn").instance()
+		get_parent().add_child(new_shot)
+		new_shot.global_transform = $Position3D.global_transform
+		SfxManager.play_sound(3,0.2)
 
 func handle_rotation(delta,input)->void:
 	rotation_degrees.y+=input.x*delta*90
@@ -36,4 +46,11 @@ func check_collisions():
 				ray.get_collider().queue_free()
 				ScoreManager.increase_score(5)
 				SfxManager.play_sound(0,0.25)
+				return
 			
+func power_up():
+	powered_up=true
+	$PowerUp.start()
+
+func _on_PowerUp_timeout():
+	powered_up=false

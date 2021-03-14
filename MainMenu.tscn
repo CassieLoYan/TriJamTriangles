@@ -89,6 +89,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HowToPlay" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 0.344
+anchor_top = 0.731
+anchor_right = 0.656
+anchor_bottom = 0.812
+margin_left = -0.256012
+margin_top = -0.239685
+margin_right = 0.255981
+margin_bottom = 0.160309
+custom_fonts/font = SubResource( 2 )
+text = "How to Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
 use_collision = true
 
@@ -109,3 +124,4 @@ material = SubResource( 4 )
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Leaderboard" to="." method="_on_Leaderboard_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HowToPlay" to="." method="_on_HowToPlay_pressed"]
