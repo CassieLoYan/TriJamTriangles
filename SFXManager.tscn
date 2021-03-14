@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SFXManager.gd" type="Script" id=1]
+[ext_resource path="res://SFX/explosion.wav" type="AudioStream" id=2]
+[ext_resource path="res://SFX/ButtonSound.wav" type="AudioStream" id=3]
+
+[node name="SFXManager" type="Node"]
+script = ExtResource( 1 )
+sounds = [ ExtResource( 2 ), ExtResource( 3 ) ]

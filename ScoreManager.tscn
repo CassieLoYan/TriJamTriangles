@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ScoreManager.gd" type="Script" id=1]
+[ext_resource path="res://VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="ScoreManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_left = 0.028
+anchor_top = 0.045
+anchor_right = 0.078
+anchor_bottom = 0.068
+margin_left = -0.0815163
+margin_top = -0.0913181
+margin_right = 100.718
+margin_bottom = 15.1087
+custom_fonts/font = SubResource( 2 )
+text = "Score: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

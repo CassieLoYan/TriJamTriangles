@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ColourManager/ColourManager.gd" type="Script" id=1]
 [ext_resource path="res://ColourManager/ColourPalette.gd" type="Script" id=2]
@@ -21,9 +21,26 @@ shader = SubResource( 2 )
 shader_param/dark_colour = null
 shader_param/light_colour = null
 
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform float offset = 1f;
+
+void fragment(){
+	vec4 green_channel = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 red_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	vec4 blue_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	COLOR = vec4(red_channel.r, green_channel.g, blue_channel.b, 1f);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/offset = 1.0
+
 [node name="ColourManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,8 +51,18 @@ palettes = [ SubResource( 1 ) ]
 material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ChromaticAberration" type="ColorRect" parent="."]
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -2,6 +2,7 @@ extends KinematicBody
 
 var speed := 0.0
 var velocity := Vector3.ZERO
+onready var rays = $rays
 
 func _physics_process(delta) -> void:
 	var input = get_inputs()
@@ -28,5 +29,11 @@ func get_inputs()->Vector3:
 	return v
 
 func check_collisions():
-	if $RayCast.is_colliding():
-		print($RayCast.get_collider())
+	for ray in rays.get_children():
+		if ray.is_colliding():
+			if ray.get_collider() is Enemy:
+				Effects.create_explosion(ray.get_collision_point())
+				ray.get_collider().queue_free()
+				ScoreManager.increase_score(5)
+				SfxManager.play_sound(0,0.25)
+			

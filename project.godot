@@ -13,20 +13,35 @@ _global_script_classes=[ {
 "class": "ColourPalette",
 "language": "GDScript",
 "path": "res://ColourManager/ColourPalette.gd"
+}, {
+"base": "Area",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy.gd"
 } ]
 _global_script_class_icons={
-"ColourPalette": ""
+"ColourPalette": "",
+"Enemy": ""
 }
 
 [application]
 
 config/name="TriJamTriangles"
-run/main_scene="res://Map.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-ColourManager="*res://ColourManager/ColourManager.tscn"
+Effects="*res://Effects.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+ScoreManager="*res://ScoreManager.tscn"
+SaveScore="*res://SaveScore.tscn"
+ColourManager="*res://CanvasLayer.tscn"
+SfxManager="*res://SFXManager.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "silent_wolf" )
 
 [input]
 

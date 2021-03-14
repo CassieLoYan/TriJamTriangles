@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Leaderboard.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="Panel" parent="."]
+anchor_left = 0.104
+anchor_top = 0.104
+anchor_right = 0.896
+anchor_bottom = 0.896
+margin_left = 0.503998
+margin_top = 0.0999985
+margin_right = -0.504028
+margin_bottom = -0.100037
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 803.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 796, 64 )
+
+[node name="Label" type="Label" parent="PanelContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -398.0
+margin_top = -32.0
+margin_right = 398.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+text = "LEADERBOARD"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoresContainer" type="ScrollContainer" parent="PanelContainer"]
+anchor_top = 0.149
+anchor_right = 0.991
+anchor_bottom = 1.0
+margin_top = 0.224998
+margin_right = 7.28998
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scores" type="VBoxContainer" parent="PanelContainer/ScoresContainer"]
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.719
+anchor_top = 0.908
+anchor_right = 0.977
+anchor_bottom = 0.99
+margin_left = 0.331604
+margin_top = 0.154053
+margin_right = 0.139587
+margin_bottom = -0.0459595
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.719
+anchor_top = 0.908
+anchor_right = 0.977
+anchor_bottom = 0.99
+margin_left = -709.385
+margin_top = 0.154053
+margin_right = -709.577
+margin_bottom = -0.0459595
+custom_fonts/font = SubResource( 2 )
+text = "Play Again"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
